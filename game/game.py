@@ -1,5 +1,6 @@
 import pygame
 from game_panel import GamePanel
+from board import Board
 
 pygame.init()
 
@@ -31,7 +32,10 @@ class Game(object):
 #        x -= vel
 
 game = Game()
-game.boards.append(GamePanel(win, None))
+game.board = Board()
+game.board.Preset0()
+game.game_panel = GamePanel(win, game.board)
+game.boards.append(game.game_panel)
 game.Loop()
 
 pygame.quit()
