@@ -141,6 +141,8 @@ def Cog(rotation: int) -> Tile:
 class Board(object):
     def __init__(self):
         self.tiles = [[Floor() for i in range(12)] for j in range(16)]
+        self.vwalls = [[False for i in range(13)] for j in range(16)]
+        self.hwalls = [[False for i in range(12)] for j in range(17)]
 
     def Preset0(self):
         self.tiles[5][0] = Belt(3, 0)
@@ -203,3 +205,25 @@ class Board(object):
         self.tiles[8][4] = Cog(1)
         self.tiles[8][5] = Cog(-1)
         self.tiles[8][8] = Cog(-1)
+
+        for i in [2,4,7,9]:
+            self.hwalls[0][i] = True
+            self.hwalls[12][i] = True
+            self.vwalls[i][0] = True
+            self.vwalls[i][12] = True
+        self.vwalls[1][3] = True
+        self.vwalls[1][6] = True
+        self.hwalls[2][2] = True
+        self.vwalls[3][5] = True
+        self.hwalls[4][5] = True
+        self.hwalls[4][8] = True
+        self.vwalls[5][6] = True
+        self.hwalls[7][8] = True
+        self.hwalls[7][10] = True
+        self.hwalls[8][2] = True
+        self.vwalls[8][3] = True
+        self.vwalls[8][7] = True
+        self.vwalls[10][1] = True
+        self.vwalls[10][2] = True
+        self.vwalls[10][7] = True
+        self.vwalls[10][10] = True
